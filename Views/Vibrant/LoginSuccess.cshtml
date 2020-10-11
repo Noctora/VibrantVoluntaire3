@@ -1,0 +1,33 @@
+﻿@model VibrantVoluntaire3.Models.UserAcc
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SUCCESSFUL LOGIN</title>
+</head>
+<body>
+    <div>
+        <h4>Welcome to Vibrant Voluntaire</h4>
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <dd>
+                <h3>@Html.DisplayFor(model => model.username)</h3>
+            </dd>
+
+            
+        </dl>
+    </div>
+    
+    <p>
+        @Html.ActionLink("Back to Home", "Index", Model)
+    </p>
+</body>
+</html>

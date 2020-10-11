@@ -1,0 +1,87 @@
+﻿@model VibrantVoluntaire3.Models.EventM
+
+@{
+    ViewBag.Title = "EventDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>EventDetails</h2>
+
+<div>
+    <h4>EventM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.event_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.event_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.event_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.event_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.venue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.venue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.attendance_limit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.attendance_limit)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.budget)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.budget)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.additional_info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.additional_info)
+        </dd>
+
+       
+
+       
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.eventId }) |*@
+    @Html.ActionLink("Back to Home", "Index")
+</p>

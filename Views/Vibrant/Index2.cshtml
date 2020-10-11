@@ -1,0 +1,59 @@
+﻿@model IEnumerable<VibrantVoluntaire3.Models.EventM>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>Here are the list of events available</h2>
+
+
+<dd>
+   To participate in any of the event, you must log in first
+</dd>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.event_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.event_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.venue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.attendance_limit)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.event_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.event_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.venue)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.attendance_limit)
+            </td>
+
+           
+        </tr>
+    }
+
+</table>
