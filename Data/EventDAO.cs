@@ -66,7 +66,7 @@ namespace VibrantVoluntaire3.Data
 
         //}
 
-        public int Create(EventM eventM)
+        public int Create(EventM eventM,int x)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -79,7 +79,7 @@ namespace VibrantVoluntaire3.Data
                 SqlCommand command = new SqlCommand(sqlQuery, connection);
 
 
-                command.Parameters.Add("@usernameId", System.Data.SqlDbType.VarChar, 1000).Value = 1000;
+                command.Parameters.Add("@usernameId", System.Data.SqlDbType.VarChar, 1000).Value = x;
                 command.Parameters.Add("@event_name", System.Data.SqlDbType.VarChar, 1000).Value = eventM.event_name;
                 command.Parameters.Add("@event_date", System.Data.SqlDbType.VarChar, 1000).Value = eventM.event_date;
                 command.Parameters.Add("@venue", System.Data.SqlDbType.VarChar, 1000).Value = eventM.venue;
@@ -192,5 +192,85 @@ namespace VibrantVoluntaire3.Data
 
 
         }
+
+
+        public void Participate(int id, int x)
+        {
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+
+                string sqlQuery = "INSERT INTO dbo.Participate_Table Values(@eventId, @usernameId)";
+
+
+
+               
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+
+                command.Parameters.Add("@eventId", System.Data.SqlDbType.VarChar, 1000).Value = id;
+                command.Parameters.Add("@usernameId", System.Data.SqlDbType.VarChar, 1000).Value = x;
+                                            
+                connection.Open();
+
+                //Doing an inserting
+                int newID = command.ExecuteNonQuery();
+
+                
+            }
+           
+        }
+
+        public bool Register(int id, int x)
+        {
+            // start by assuming that it failed
+            bool success = true;
+
+            // write the sql expression
+            string queryString = "SELECT * FROM dbo.Participate_Table WHERE eventId = @id AND usernameId = @x";
+
+            // create and open the connection to the database inside a using block.
+            // this ensures that all resources are closed properly when the query is done.
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // create the command and parameter objects
+                SqlCommand command = new SqlCommand(queryString, connection);
+
+                // @username is from query assigned to value of parameter import, in this case, user
+                // associate @username with user.username
+                command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+                command.Parameters.Add("@x", System.Data.SqlDbType.Int).Value = x;
+
+                //command.Parameters.Add("@usernameId", System.Data.SqlDbType.VarChar, 50).Value = user.usernameId;
+
+                // open the database and run the command.
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    UserAcc users = new UserAcc();
+
+                    if (reader.HasRows)
+                    {                       
+                        success = true;
+                    }
+                    else
+                    {
+                        success = false;
+                    }
+                    reader.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
+            return success;
+        }
+
+
+
     }
 }

@@ -131,6 +131,7 @@
     <Compile Include="Models\EventM.cs" />
     <Compile Include="Models\GlobalVar.cs" />
     <Compile Include="Models\NGOAcc.cs" />
+    <Compile Include="Models\Registration.cs" />
     <Compile Include="Models\UserAcc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\SecurityService.cs" />
@@ -188,6 +189,8 @@
     <Content Include="Views\Vibrant\EventList.cshtml" />
     <Content Include="Views\Vibrant\EventDetails.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Vibrant\JoinFailed.cshtml" />
+    <Content Include="Views\Vibrant\JoinSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

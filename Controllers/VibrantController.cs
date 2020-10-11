@@ -273,8 +273,8 @@ namespace VibrantVoluntaire3.Controllers
         {
             //save to the db.
             EventDAO eventDAO = new EventDAO();
-
-            eventDAO.Create(eventM);
+            int x = (int)TempData["ID"];
+            eventDAO.Create(eventM,x);
             //UserAcc users = new UserAcc();
 
 
@@ -292,6 +292,37 @@ namespace VibrantVoluntaire3.Controllers
             EventM events = eventDAO.FetchOne(id);
             TempData.Keep();
             return View("EventDetails", events);
+        }
+
+        public ActionResult JoinEvents(int id)
+        {
+            int x = (int)TempData["ID"];
+            EventDAO eventDAO = new EventDAO();
+
+            
+            Boolean success = eventDAO.Register(id,x);
+
+            if (success)
+            {
+                TempData.Keep();
+                return View("JoinFailed");
+            }
+            else
+            {
+                eventDAO.Participate(id, x);
+                TempData.Keep();
+                return View("JoinSuccess");
+            }
+
+        }
+
+        public ActionResult NGODetails2(int id)
+        {
+            NGODAO ngoDAO = new NGODAO();
+            NGOAcc ngo = ngoDAO.FetchOne(id);
+
+            TempData.Keep();
+            return View("NGODetails", ngo);
         }
 
     }
