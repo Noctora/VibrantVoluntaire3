@@ -316,13 +316,14 @@ namespace VibrantVoluntaire3.Controllers
 
         }
 
-        public ActionResult NGODetails2(int id)
+        public ActionResult EventTab()
         {
-            NGODAO ngoDAO = new NGODAO();
-            NGOAcc ngo = ngoDAO.FetchOne(id);
+            int x = (int)TempData["ID"];
+            EventDAO eventDAO = new EventDAO();
+            EventM events = eventDAO.listEvent(x);
 
             TempData.Keep();
-            return View("NGODetails", ngo);
+            return View("EventTab", events);
         }
 
     }

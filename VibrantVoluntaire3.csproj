@@ -191,6 +191,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Vibrant\JoinFailed.cshtml" />
     <Content Include="Views\Vibrant\JoinSuccess.cshtml" />
+    <Content Include="Views\Vibrant\EventTab.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -270,7 +270,50 @@ namespace VibrantVoluntaire3.Data
             return success;
         }
 
+        public EventM listEvent(int id)
+        {
 
+            // access the database
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string sqlQuery = "SELECT * from dbo.Event_Info WHERE eventId = @id";
+
+                // associate @id with Id parameter beside fetchone
+
+
+                SqlCommand command = new SqlCommand(sqlQuery, connection);
+
+                command.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+
+                EventM events = new EventM();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        events.eventId = reader.GetInt32(0);
+                        events.usernameId = reader.GetInt32(1);
+                        events.event_name = reader.GetString(2);
+                        events.event_date = reader.GetString(3);
+                        events.venue = reader.GetString(4);
+                        events.location = reader.GetString(5);
+                        events.attendance_limit = reader.GetInt32(6);
+                        //events.budget = reader.GetFloat(7);
+                        events.rating = reader.GetInt32(7);
+                        events.additional_info = reader.GetString(8);
+
+                    }
+                }
+                return events;
+            }
+
+
+        }
 
     }
 }
