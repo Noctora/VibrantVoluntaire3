@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\VibrantController.cs" />
     <Compile Include="Data\EventDAO.cs" />
     <Compile Include="Data\NGODAO.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Views\Vibrant\JoinFailed.cshtml" />
     <Content Include="Views\Vibrant\JoinSuccess.cshtml" />
     <Content Include="Views\Vibrant\EventTab.cshtml" />
+    <Content Include="Views\Admin\AdminHome.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
